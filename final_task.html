@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="Personal blog exreicse">
+        <title>Oded's Blog</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+        <script> 
+            function fetchText(filePath, elementId)
+            {
+                fetch(filePath)
+                .then(response => response.text())
+                .then(text =>
+                    {
+                        document.getElementById(elementId).innerText = text;
+                    })
+                    .catch(error => console.error('Faild to load ${filePath}', error));
+            }
+            window.onload = function()
+            {
+                fetchText("about_me.txt", "aboutText");
+                fetchText("blog.txt", "blogText");
+            };
+        </script>
+    </head>
+
+    <body>
+        <header>
+        <h1> Oded's blog: html final assigment before css</h1>
+        </header>
+        <nav>   
+            <ul>
+                <li> <a href="#About">About me</a> </li>
+                <li> <a href="#Blog">My blog</a> </li>
+                <li> <a href="#Notes">Notes</a> </li>
+            </ul>
+        </nav>
+        <main>
+
+        <section id="About">
+            <h2>About me: Oded Ben-Yair the refoloxigst that became developer in 8 months!</h2>
+            <img src="photo.jpg" width="250" alt="profile photo">
+            <p id="aboutText"></p> 
+        </section>
+        
+        <section id="Blog">
+            <h2>The Connection Between Code and Mindfulness</h2>
+            <p id="blogText"></p>
+        </section>
+
+        <section id="Notes">
+            <h2>Notes:</h2>
+            <p>
+                this exrecise was to show the base of learning html for today session. 
+                only missing now is video for end:
+            </p>
+                <video width="300" controls>
+                    <source src="video.webm" type="video/webm">
+                </video>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Oded Ben-Yair. All rights reserved.</p>
+    </footer>
+    </body>
+</html>

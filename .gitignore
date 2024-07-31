@@ -1,0 +1,25 @@
+# Node modules
+/node_modules/
+
+# Environment variables
+.env
+
+# System Files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Log files
+*.log
+
+# Optional: build/output folder
+/dist/
+/build/
+

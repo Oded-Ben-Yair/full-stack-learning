@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="comments_style.css">
+    <meta charset="UTF-8">
+    <meta name="description" content="Blog with comments">
+    <title>Comments Exercise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Comments Exercise!</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#todays-article">Today's Article</a></li>
+            <li><a href="#write-comment">Write Comment</a></li>
+            <li><a href="#today-motivation-sentence">Today Motivation Sentence</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="todays-article">
+            <h2>How to learn code in 12 weeks</h2>
+            <p>Keep on learning, write code all the time, practice interview questions and learn more than what you must know, learn so you will find interest in this.</p>
+        </section>
+
+        <section id="write-comment">
+            <h2>Have something to say about it?</h2>
+            <div id="comments"></div>
+            <form id="comments-form">
+                <input type="text" id="commentinput" placeholder="Enter your comment">
+                <button type="submit">Post comment</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Oded Ben-Yair. All rights reserved.</p>
+    </footer>
+   
+<script>
+    document.getElementById('comments-form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent the default form submission
+    
+        const commentInput = document.getElementById('commentinput');
+        const comment = commentInput.value;
+    
+        fetch('/api/comments', { // Make an AJAX POST request to your server
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ comment: comment }) // Send the comment as JSON
+        })
+        .then(response => response.json())
+        .then(data => {
+            commentInput.value = ''; // Clear the input field
+            fetchComments(); // Fetch all comments again to update the page dynamically
+        })
+        .catch(error => console.error('Error:', error));
+    });
+    
+    function fetchComments() {
+        fetch('/api/comments') // AJAX GET request to get all comments
+        .then(response => response.json())
+        .then(comments => {
+            const commentsContainer = document.getElementById('comments');
+            commentsContainer.innerHTML = ''; // Clear existing comments
+            comments.forEach(comment => {
+                const commentDiv = document.createElement('div');
+                commentDiv.textContent = comment.comment; // Assuming comment is an object with a 'comment' property
+                commentsContainer.appendChild(commentDiv);
+            });
+        })
+        .catch(error => console.error('Error fetching comments:', error));
+    }
+    
+    window.onload = fetchComments; // Load comments when the page loads
+    </script>
+    
+</body>
+</html>
