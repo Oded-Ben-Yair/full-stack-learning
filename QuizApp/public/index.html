@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+</head>
+<body>
+    <form id="quizForm" onsubmit="submitQuiz(); return false;">
+        <div id="question">Question will go here</div>
+        <div id="options">
+            <input type="radio" name="answer" id="option1" value="Option 1"><label for="option1">Option 1</label><br>
+            <input type="radio" name="answer" id="option2" value="Option 2"><label for="option2">Option 2</label><br>
+            <input type="radio" name="answer" id="option3" value="Option 3"><label for="option3">Option 3</label><br>
+            <input type="radio" name="answer" id="option4" value="Option 4"><label for="option4">Option 4</label>
+        </div>
+        <div id="timer">00:60</div>
+        <button type="submit">Submit Answer</button>
+    </form>
+    <script src="script.js"></script>
+</body>
+</html>

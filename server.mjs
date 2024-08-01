@@ -1,37 +1,29 @@
 import express from 'express';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import bodyParser from 'body-parser';
 
 const app = express();
-const port =3000;
+const port = 3000;
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+// Middleware to parse JSON data
+app.use(bodyParser.json());
+// Middleware to parse URL-encoded data
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); 
+// Serve static files
+app.use(express.static('public'));
 
+// Route for the form page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'comments.html')); 
+    res.sendFile('w_s_4.html', { root: '.' });
 });
 
-let comments = [];
-
-app.get('/api/comments', (req, res) => {
-    res.json(comments);
+// Route to handle form submissions
+app.post('/submit-form', (req, res) => {
+    const { name, email } = req.body;
+    res.send(`Name: ${name} <br> Email: ${email}`);
 });
 
-app.post('/api/comments', (req, res) => {
-    // Ensure there is a comment to add
-    if (req.body && req.body.comment) {
-        comments.push(req.body.comment);  // Add the comment to the array
-        // Respond with the updated comments list and a success message
-        res.status(201).json({ message: "Comment added successfully", comments: comments });
-    } else {
-        // Respond with an error if no comment is provided
-        res.status(400).json({ message: "No comment provided" });
-    }
-});
-
+// Start the server
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+    console.log(`Server running at http://localhost:${port}`);
 });

@@ -1,0 +1,119 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0; /* Light grey background */
+    color: #333; /* Dark grey text color */
+}
+
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff; /* White background */
+    box-shadow: 0px 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
+    border-radius: 8px;
+}
+
+/* Form Styles */
+form {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    gap: 15px; /* Space between form elements */
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1); /* Subtle shadow */
+    margin: 20px auto;
+    max-width: 100%;
+}
+
+fieldset {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between fieldset elements */
+    border: 1px solid #ccc; /* Light grey border */
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+/* General input styling, excluding submit button */
+input:not([type="submit"]) {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Enhanced hover state for input fields, excluding submit button */
+input:not([type="submit"]):hover {
+    border-color: #007BFF; /* Blue border on hover */
+}
+
+/* Focus state for input fields, excluding submit button */
+input:not([type="submit"]):focus {
+    border-color: #007BFF; /* Blue border on focus */
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: #4CAF50; /* Green background */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #45a049; /* Darker green on hover */
+}
+
+input[type="submit"]:active {
+    background-color: #388e3c; /* Even darker green on click */
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: #f0f0f0; /* Match body background */
+    border-top: 1px solid #ccc; /* Light grey top border */
+    font-size: 0.9em;
+    color: #777; /* Light grey text color */
+    margin-top: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    main {
+        padding: 10px;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"] {
+        padding: 8px;
+    }
+
+    input[type="submit"] {
+        width: 100%; /* Full-width button on smaller screens */
+        padding: 12px;
+    }
+}

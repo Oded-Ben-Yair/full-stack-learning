@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="description" content="interactive form">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>W.S Day 4 Assignment</title>
+        <link rel="stylesheet" href="styles.css">
+        <script defer src="script.js"></script>
+    </head>
+    <body>
+        <form action="/submit-form" method="post" aria-labelledby="form-title">
+            <fieldset>
+                <legend id="form-title">Personal Information</legend>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required aria-required="true" aria-describedby="name-desc">
+                <small id="name-desc" class="sr-only">Please enter your full name.</small>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required aria-required="true" aria-describedby="email-desc">
+                <small id="email-desc" class="sr-only">Please enter a valid email address.</small>
+            </fieldset>
+            <input type="submit" value="Submit">
+        </form>
+        <footer>&copy; All rights reserved to Oded Ben-Yair.</footer>
+    </body>
+</html>
